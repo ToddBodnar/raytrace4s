@@ -2,7 +2,7 @@ package raytrace4s.shapes
 import raytrace4s.primitives.{ Color, Ray, Vector3d }
 
 class Sphere(center: Vector3d, radius: Double, baseColor: Color) extends Shape {
-  def intersect(ray: Ray, world: List[Shape], bounces: Int): (Double, Color) = {
+  def intersect(ray: Ray, tracer: (Ray) => Color, bounces: Int): (Double, Color) = {
     def centeredCollision(centeredCenter: Vector3d): Double = {
       val a = ray.direction dot ray.direction
       val b = centeredCenter dot ray.direction * 2

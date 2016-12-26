@@ -13,5 +13,5 @@ object Main extends App {
     new Sphere(new Vector3d(0.35, 0, -.75), 0.35, new Color(0, 0, 0)),
     new Sphere(new Vector3d(-0.35, 0.35, -1.05), 0.35, new Color(0, 1, 0)))
 
-  new ImageWriter(width, height, new WorldRenderer(width, height, shapes).stream).write("test")
+  new ImageWriter(width, height, new WorldRenderer(width, height, new World(shapes)).stream).write("test")
 }
