@@ -11,7 +11,8 @@ object Main extends App {
 
   val shapes = List(new Sphere(new Vector3d(0, 0, -1), 0.5, new Color(1, 0, 0)),
     new Sphere(new Vector3d(0.35, 0, -.75), 0.35, new Color(0, 0, 0)),
-    new Sphere(new Vector3d(-0.35, 0.35, -1.05), 0.35, new Color(0, 1, 0)))
+    new Sphere(new Vector3d(-0.35, 0.35, -1.05), 0.35, new Color(0, 1, 0)),
+    new Sphere(new Vector3d(0, -10000.5, -1), 10000, new Color(1, 1, 0)))
 
-  new ImageWriter(width, height, new WorldRenderer(width, height, new World(shapes)).stream).write("test")
+  new ImageWriter(width, height, new WorldRenderer(width, height, new World(shapes), 5).stream).write("test")
 }

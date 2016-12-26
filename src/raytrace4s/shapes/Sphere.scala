@@ -14,8 +14,14 @@ class Sphere(center: Vector3d, radius: Double, baseColor: Color) extends Shape {
         (-b - math.sqrt(descriminant)) / 2 / a
       }
     }
+
+    def normal(distance: Double): Vector3d = {
+      (ray.pointAt(distance) - center).unit
+    }
     //keep these two lines separate for later stuff
     val distance = centeredCollision(ray.origin - center)
-    (distance, baseColor)
+    //(distance, baseColor)
+    //render normals
+    (distance, new Color(normal(distance) * .5 + .5))
   }
 }

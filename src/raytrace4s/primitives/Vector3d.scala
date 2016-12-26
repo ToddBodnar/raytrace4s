@@ -2,6 +2,7 @@ package raytrace4s.primitives
 
 class Vector3d(val x: Double, val y: Double, val z: Double) {
   def +(other: Vector3d): Vector3d = new Vector3d(x + other.x, y + other.y, z + other.z)
+  def +(other: Double): Vector3d = new Vector3d(x + other, y + other, z + other)
   def -(other: Vector3d): Vector3d = this + (other * -1)
   def *(other: Vector3d): Vector3d = new Vector3d(x * other.x, y * other.y, z * other.z)
   def *(other: Double): Vector3d = new Vector3d(x * other, y * other, z * other)
