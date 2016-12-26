@@ -1,27 +1,33 @@
 package raytrace4s.shapes
-import raytrace4s.primitives.{ Color, Ray, Vector3d }
+import raytrace4s.primitives.{ Material, Ray, Vector3d }
 
-class Sphere(center: Vector3d, radius: Double, baseColor: Color) extends Shape {
-  def intersect(ray: Ray, tracer: (Ray) => Color, bounces: Int): (Double, Color) = {
+class Sphere(center: Vector3d, radius: Double, material: Material) extends Shape {
+  def intersect(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material) = {
     def centeredCollision(centeredCenter: Vector3d): Double = {
       val a = ray.direction dot ray.direction
-      val b = centeredCenter dot ray.direction * 2
+      val b = (centeredCenter dot ray.direction)
       val c = (centeredCenter dot centeredCenter) - radius * radius
-      val descriminant = b * b - a * c * 4
-      if (descriminant < 0) {
+      val descriminant = b * b - (a * c)
+      if (descriminant <= 0.0001) {
         -1
       } else {
-        (-b - math.sqrt(descriminant)) / 2 / a
+        if ((-b - math.sqrt(descriminant)) / a > 0) {
+          (-b - math.sqrt(descriminant)) / a
+        } else {
+          (-b + math.sqrt(descriminant)) / a
+        }
       }
     }
 
-    def normal(distance: Double): Vector3d = {
-      (ray.pointAt(distance) - center).unit
+    val distance = centeredCollision(ray.origin - center)
+
+    def normal(): Vector3d = {
+      (ray.pointAt(distance) - center) / radius
     }
     //keep these two lines separate for later stuff
-    val distance = centeredCollision(ray.origin - center)
-    //(distance, baseColor)
+    //(distance, baseColor.merge(getNextBounce, diffuseAmount))
+    (distance, ray.pointAt(distance), normal, material)
     //render normals
-    (distance, new Color(normal(distance) * .5 + .5))
+    //(distance, new Color((normal +1 )/2))
   }
 }
