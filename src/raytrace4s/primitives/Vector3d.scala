@@ -8,8 +8,8 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
   def *(other: Double): Vector3d = new Vector3d(x * other, y * other, z * other)
   def /(other: Vector3d): Vector3d = new Vector3d(x / other.x, y / other.y, z / other.z)
   def /(other: Double): Vector3d = this * (1 / other)
-  
-  def sqrt(): Vector3d = new Vector3d(math.sqrt(x),math.sqrt(y),math.sqrt(z))
+
+  def sqrt(): Vector3d = new Vector3d(math.sqrt(x), math.sqrt(y), math.sqrt(z))
 
   def len: Double = math.sqrt(squared_len)
   def squared_len: Double = this dot this

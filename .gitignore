@@ -3,3 +3,5 @@
 .cache-main
 
 test.png
+
+*.class
