@@ -17,7 +17,7 @@ object Main extends App {
   val nice = new Config(1000, 500, 10, 20)
   val print = new Config(1000, 500, 20, 50)
 
-  val currentConfig = fast
+  val currentConfig = fastbig
 
   val shapes = List(new Sphere(new Vector3d(0, 0, -1), 0.5, new Material(new Color(1, 0, 0), 0.25, 0.5, 0, 0, 0, 0)),
     new Sphere(new Vector3d(0.35, 0, -.75), 0.35, new Material(new Color(0.1, 0.1, 0.1), 0.25, 0.5, 0, 0, 0, 0)),
