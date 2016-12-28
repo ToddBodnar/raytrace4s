@@ -1,12 +1,12 @@
 package raytrace4s
 import primitives.Pixel
 import me.tongfei.progressbar._
-import tools.{ WorldRenderer, Config }
+import tools.{ Renderer, Config }
 import java.awt.image.BufferedImage
 import javax.imageio.ImageIO
 import java.io.File
 
-class ImageWriter(config: Config, renderer: WorldRenderer) {
+class ImageWriter(config: Config, renderer: Renderer) {
   def img = {
     val progressBar = new ProgressBar("Rendering image",config.width* config.height)
     progressBar.start

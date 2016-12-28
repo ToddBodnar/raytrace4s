@@ -2,7 +2,7 @@ package raytrace4s.tools
 import raytrace4s.primitives._
 import raytrace4s.shapes.Shape
 
-class WorldRenderer(world: World) {
+class WorldRenderer(world: World) extends Renderer{
 
   def render(x: Int, y: Int, config: Config): Color = {
 
