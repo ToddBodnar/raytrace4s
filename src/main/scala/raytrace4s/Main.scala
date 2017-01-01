@@ -19,8 +19,8 @@ object Main extends App {
 
   val currentConfig = nice
   
-  //val camera = new Camera(90, 2, new Vector3d(0,0,0), new Vector3d(0,1,0), new Vector3d(0,0,-1))
-  val camera = new Camera(90, 2, new Vector3d(0,1,0), new Vector3d(.25,.75,0), new Vector3d(-.25,0,-1))
+  val camera = new Camera(90, 2, new Vector3d(0,0,0), new Vector3d(0,1,0), new Vector3d(0,0,-1), .01, .8)
+  //val camera = new Camera(90, 2, new Vector3d(0,1,0), new Vector3d(.25,.75,0), new Vector3d(-.25,0,-1))
 
   val shapes = List(new Sphere(new Vector3d(0, 0, -1), 0.5, new Material(new Color(1, 0, 0), 0.25, 0.5, 0, 0, 0, 0)),
     new Sphere(new Vector3d(0.35, 0, -.75), 0.35, new Material(new Color(0.1, 0.1, 0.1), 0.25, 0.5, 0, 0, 0, 0)),
@@ -31,6 +31,15 @@ object Main extends App {
     new Sphere(new Vector3d(-1.5, 0.05, -1.05), 0.15, new Material(new Color(.9, .9, .9), 0.25, 0.5, 1, .25, 0, 0)),
     new Sphere(new Vector3d(-1.5, 0.35, -1.05), 0.15, new Material(new Color(.9, .9, .9), 0.25, 0.5, .5, 0, 0, 0)),
     new Sphere(new Vector3d(-1.5, 0.65, -1.05), 0.15, new Material(new Color(.9, .9, .9), 0.25, 0.5, 1, 0, 0, 0)),
+    
+    new Sphere(new Vector3d(-.6, -0.35, -.5), 0.15, new Material(new Color(.2, .2, .9), 0.25, 0.5, 0,0, 0, 0)),
+    new Sphere(new Vector3d(-.9, -0.35, -1), 0.15, new Material(new Color(.2, .2, .9), 0.25, 0.5, 0,0, 0, 0)),
+    new Sphere(new Vector3d(-1.2, -0.35, -1.5), 0.15, new Material(new Color(.2, .2, .9), 0.25, 0.5, 0,0, 0, 0)),
+    new Sphere(new Vector3d(-1.5, -0.35, -2), 0.15, new Material(new Color(.2, .2, .9), 0.25, 0.5, 0,0, 0, 0)),
+    new Sphere(new Vector3d(-1.8, -0.35, -2.5), 0.15, new Material(new Color(.2, .2, .9), 0.25, 0.5, 0,0, 0, 0)),
+    new Sphere(new Vector3d(-2.1, -0.35, -3), 0.15, new Material(new Color(.2, .2, .9), 0.25, 0.5, 0,0, 0, 0)),
+    
+    
     new Sphere(new Vector3d(0, -10000.5, -1), 10000, new Material(new Color(1, 1, 0), 0.25, 0.5, 0, 0, 0, 0)))
 
   new ImageWriter(currentConfig, new WorldRenderer(camera,new World(shapes))).write("test")
