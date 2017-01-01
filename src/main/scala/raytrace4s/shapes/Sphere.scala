@@ -1,7 +1,7 @@
 package raytrace4s.shapes
 import raytrace4s.primitives.{ Material, Ray, Vector3d }
 
-class Sphere(center: Vector3d, radius: Double, material: Material) extends Shape {
+class Sphere(val center: Vector3d, val radius: Double, material: Material) extends Shape {
   def intersect(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material) = {
     def centeredCollision(centeredCenter: Vector3d): Double = {
       val a = ray.direction dot ray.direction

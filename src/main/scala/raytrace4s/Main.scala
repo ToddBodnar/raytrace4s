@@ -19,10 +19,37 @@ object Main extends App {
 
   val currentConfig = nice
   
-  val camera = new Camera(90, 2, new Vector3d(0,0,0), new Vector3d(0,1,0), new Vector3d(0,0,-1), .01, .8)
+  val world = new Sphere(new Vector3d(0, -10000.5, -1), 10000, new Material(new Color(.8, .8, .8), 0.25, 0.5, 0, 0, 0, 0))
+
+  def genSpheres(ct: Int): List[Sphere] = {
+    if(ct <= 0){
+      return List()
+    }else{
+      val rnd = math.random
+      val material = if(rnd < .8){
+        new Material(new Color(math.random/2+.5, math.random/2+.5, math.random/2+.5), 0.25, 0.25,0,0,0,0)
+      } else if (rnd < 0.95){
+        new Material(new Color(1,1,1), .25, .5, 1, 0,0,0)
+      } else{
+        new Material(new Color(1,1,1), 0,0,0,0,1, 1.5)
+      }
+      List(new Sphere(new Vector3d(math.random * 40 - 10, -0.35, math.random * 40 - 10), 0.15, material)):::genSpheres(ct-1)
+    }
+  }
+  
+  def removeCollision(current:List[Sphere], next:Sphere) : List[Sphere] = {
+    if(current.exists { ball => ((ball.center - next.center).len) < (ball.radius + next.radius) }){
+      current
+    }else{
+      current :+ next
+    }
+  }
+  
+  val camera = new Camera(50, 2, new Vector3d(-2,1,-4), new Vector3d(0,1,0), new Vector3d(0,0.5, 0), .01, 3.8)
+  
   //val camera = new Camera(90, 2, new Vector3d(0,1,0), new Vector3d(.25,.75,0), new Vector3d(-.25,0,-1))
 
-  val shapes = List(new Sphere(new Vector3d(0, 0, -1), 0.5, new Material(new Color(1, 0, 0), 0.25, 0.5, 0, 0, 0, 0)),
+  /**val shapes = List(new Sphere(new Vector3d(0, 0, -1), 0.5, new Material(new Color(1, 0, 0), 0.25, 0.5, 0, 0, 0, 0)),
     new Sphere(new Vector3d(0.35, 0, -.75), 0.35, new Material(new Color(0.1, 0.1, 0.1), 0.25, 0.5, 0, 0, 0, 0)),
     new Sphere(new Vector3d(1.1, 0.3, -.75), 0.15, new Material(new Color(0.99, 0.99, 0.99), 0.25, 0.5, 0, 0, 1, 1.5)),
     new Sphere(new Vector3d(1.1, 0.0, -.75), -0.15, new Material(new Color(0.99, 0.99, 0.99), 0.25, 0.5, 0, 0, 1, 1.5)),
@@ -41,7 +68,13 @@ object Main extends App {
     
     
     new Sphere(new Vector3d(0, -10000.5, -1), 10000, new Material(new Color(1, 1, 0), 0.25, 0.5, 0, 0, 0, 0)))
-
+  **/
+  val preprogramedShapes = List(world,
+      new Sphere(new Vector3d(2, 0.5, 0), 1, new Material(new Color(1, 0,0), 0.25, 0.5, 0, 0, 0, 0)),
+    new Sphere(new Vector3d(0, 0.5, 0), 1, new Material(new Color(.9,.9,.9), 0.25, 0.5, 0, 0, 1, 1.5)),
+    new Sphere(new Vector3d(-2, 0.5, 0), 1, new Material(new Color(.8,1,.8), 0.25, 0.5, .95, 0, 0,0)))
+    
+  val shapes = genSpheres(4000).foldLeft(preprogramedShapes)(removeCollision)
   new ImageWriter(currentConfig, new WorldRenderer(camera,new World(shapes))).write("test")
   //new ImageWriter(currentConfig, new TimeRenderer(new WorldRenderer(new World(shapes)), 100.0)).write("test")
 }
