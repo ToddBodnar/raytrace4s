@@ -1,6 +1,8 @@
 # Raytrace4s
 A Scala based ray tracer. 95% pure functional.
 
+![A sample rendering](https://raw.githubusercontent.com/ToddBodnar/raytrace4s/master/renders/test22.png)
+
 ## About
 A side project based on [Peter Shirley's raytracing series](https://www.amazon.com/Ray-Tracing-Weekend-Minibooks-Book-ebook/dp/B01B5AODD8), it was built for educational purposes and doesn't contain many optimizations.
 
