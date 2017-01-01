@@ -2,7 +2,7 @@ package raytrace4s.tools
 import raytrace4s.primitives._
 import raytrace4s.shapes.Shape
 
-class WorldRenderer(world: World) extends Renderer{
+class WorldRenderer(camera:Camera, world: World) extends Renderer{
 
   def render(x: Int, y: Int, config: Config): Color = {
 
@@ -17,7 +17,7 @@ class WorldRenderer(world: World) extends Renderer{
       } else if (xCt >= config.sqrtSubSamples) {
         render(0, yCt + 1, acc)
       } else {
-        render(xCt + 1, yCt, acc + (world.fire(new Ray(origin, (lowerLeft + horizontal * ((x + 1.0 * xCt / config.sqrtSubSamples - 0.5) * 1.0 / config.width) + vertical * ((y + 1.0 * yCt / config.sqrtSubSamples - 0.5) * 1.0 / config.height)).unit), config.maxBounces).vector / config.sqrtSubSamples / config.sqrtSubSamples))
+        render(xCt + 1, yCt, acc + (world.fire(camera.getRay((x + 1.0 * xCt / config.sqrtSubSamples - 0.5) / config.width , (y + 1.0 * yCt / config.sqrtSubSamples - 0.5) / config.height), config.maxBounces).vector / config.sqrtSubSamples / config.sqrtSubSamples))
       }
     }
     new Color(render(0, 0, new Vector3d(0, 0, 0)))

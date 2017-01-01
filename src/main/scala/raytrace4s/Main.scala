@@ -18,6 +18,9 @@ object Main extends App {
   val print = new Config(1000, 500, 20, 50)
 
   val currentConfig = nice
+  
+  //val camera = new Camera(90, 2, new Vector3d(0,0,0), new Vector3d(0,1,0), new Vector3d(0,0,-1))
+  val camera = new Camera(90, 2, new Vector3d(0,1,0), new Vector3d(.25,.75,0), new Vector3d(-.25,0,-1))
 
   val shapes = List(new Sphere(new Vector3d(0, 0, -1), 0.5, new Material(new Color(1, 0, 0), 0.25, 0.5, 0, 0, 0, 0)),
     new Sphere(new Vector3d(0.35, 0, -.75), 0.35, new Material(new Color(0.1, 0.1, 0.1), 0.25, 0.5, 0, 0, 0, 0)),
@@ -30,5 +33,6 @@ object Main extends App {
     new Sphere(new Vector3d(-1.5, 0.65, -1.05), 0.15, new Material(new Color(.9, .9, .9), 0.25, 0.5, 1, 0, 0, 0)),
     new Sphere(new Vector3d(0, -10000.5, -1), 10000, new Material(new Color(1, 1, 0), 0.25, 0.5, 0, 0, 0, 0)))
 
-  new ImageWriter(currentConfig, new TimeRenderer(new WorldRenderer(new World(shapes)), 100.0)).write("test")
+  new ImageWriter(currentConfig, new WorldRenderer(camera,new World(shapes))).write("test")
+  //new ImageWriter(currentConfig, new TimeRenderer(new WorldRenderer(new World(shapes)), 100.0)).write("test")
 }

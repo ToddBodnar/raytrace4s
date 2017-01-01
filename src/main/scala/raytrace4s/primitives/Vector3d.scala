@@ -16,5 +16,5 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
   def unit: Vector3d = this / len
 
   def dot(other: Vector3d): Double = x * other.x + y * other.y + z * other.z
-  def cross(other: Vector3d): Vector3d = new Vector3d(y * other.z - z * other.y, y * other.x - x * other.y, x * other.y - y * other.x)
+  def cross(other: Vector3d): Vector3d = new Vector3d(y * other.z - z * other.y, -(x * other.z - z * other.x), x * other.y - y * other.x)
 }
