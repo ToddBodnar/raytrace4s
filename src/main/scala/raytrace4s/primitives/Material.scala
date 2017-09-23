@@ -1,6 +1,11 @@
 package raytrace4s.primitives
+import raytrace4s.textures.{ColorTexture, Texture}
 
-class Material(baseColor: Color, diffuseAmt: Double, lightDampening: Double, reflectionAmount: Double, reflectionFuzzy: Double, transparency: Double, refractionIndex: Double) {
+class Material(baseTexture: Texture, diffuseAmt: Double, lightDampening: Double, reflectionAmount: Double, reflectionFuzzy: Double, transparency: Double, refractionIndex: Double) {
+  def this(baseColor: Color, diffuseAmt: Double, lightDampening: Double, reflectionAmount: Double, reflectionFuzzy: Double, transparency: Double, refractionIndex: Double) {
+    this(new ColorTexture(baseColor), diffuseAmt: Double, lightDampening: Double, reflectionAmount: Double, reflectionFuzzy: Double, transparency: Double, refractionIndex: Double);
+  }
+  
   def getColor(ray: Ray, distance: Double, normal: Vector3d, tracer: (Ray, Int) => Color, bounces: Int): Color = {
     if (bounces <= 0) {
       new Color(0, 0, 0)
@@ -32,7 +37,7 @@ class Material(baseColor: Color, diffuseAmt: Double, lightDampening: Double, ref
       }
       val target = ray.pointAt(distance) + normal + getP
 
-      def diffusedColor(): Color = new Color((new Color(0, 0, 0).merge(fireRay(target - ray.pointAt(distance)), diffuseAmt).vector * lightDampening).sqrt * baseColor.vector)
+      def diffusedColor(): Color = new Color((new Color(0, 0, 0).merge(fireRay(target - ray.pointAt(distance)), diffuseAmt).vector * lightDampening).sqrt * baseTexture.colorAt(ray.pointAt(distance)).vector)
 
       def reflectionColor(): Color = {
         if (reflectionAmount > 0) {
