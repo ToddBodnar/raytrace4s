@@ -17,4 +17,9 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
 
   def dot(other: Vector3d): Double = x * other.x + y * other.y + z * other.z
   def cross(other: Vector3d): Vector3d = new Vector3d(y * other.z - z * other.y, -(x * other.z - z * other.x), x * other.y - y * other.x)
+  
+  def apply(f: Double => Double): Vector3d = new Vector3d(f(x), f(y), f(z))
+  def reduce(f: (Double, Double) => Double): Double = f(f(x,y),z)
+  
+  override def toString(): String = "["+x+","+y+","+z+"]"
 }
