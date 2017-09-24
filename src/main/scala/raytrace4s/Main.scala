@@ -6,6 +6,9 @@ import tools._
 import shapes._
 import textures._
 
+import javax.imageio.ImageIO
+import java.io.File
+
 object Main extends App {
   val width = 1000
   val height = 500
@@ -18,7 +21,7 @@ object Main extends App {
   val nice = new Config(1000, 500, 10, 20)
   val print = new Config(1000, 500, 20, 50)
 
-  val currentConfig = print
+  val currentConfig = fastbig
   
   
   def endBookOne(): WorldRenderer = {
@@ -95,5 +98,18 @@ object Main extends App {
      new WorldRenderer(camera, new World(shapes))
   }
   
-  new ImageWriter(currentConfig, checkerBox()).write("test")
+  def textureGenerators(): WorldRenderer = {
+    val camera = new Camera(50, 2, new Vector3d(-2,1,-4), new Vector3d(0,1,0), new Vector3d(0,0.5, 0), .01, 3.8)
+    val world = new Sphere(new Vector3d(0, -10000.5, -1), 10000, MaterialFactory.basicMaterial(new CheckeredTexture(new ColorTexture(new Color(.005,.005,.005)), new ColorTexture(new Color(.995,.995,.995)), .1)))
+
+    val shapes = List(world,
+        new Sphere(new Vector3d(2, 0.5, 0), 1, MaterialFactory.basicMaterial(new ColorTexture(new Color(1, 0,0)))),
+      new Sphere(new Vector3d(0, 0.5, 0), 1, MaterialFactory.basicMaterial(new ImageSphereTexture(ImageIO.read(new File("earth.jpg")), new Vector3d(0, 0.5, 0)))),
+      new Sphere(new Vector3d(-2, 0.5, 0), 1, MaterialFactory.basicMaterial(new PerlinTexture(new ColorTexture(new Color(.995,.995,.995)), new ColorTexture(new Color(.005,.005,.005)), 1))))
+      
+      
+     new WorldRenderer(camera, new World(shapes))
+  }
+  
+  new ImageWriter(currentConfig, textureGenerators()).write("test")
 }

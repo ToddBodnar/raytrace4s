@@ -1,5 +1,7 @@
 package raytrace4s.tools
 
+import raytrace4s.primitives.Vector3d
+
 object Randomizer {
   val seed = 0xb5ad4eceda1ce2a9L;
   /**
@@ -23,5 +25,9 @@ object Randomizer {
   
   def randDouble(seed: Long): Double = {
     randRange(seed, 10000) / 10000.0
+  }
+  
+  def randUnit(seed: Long): Vector3d = {
+    new Vector3d(randDouble(seed + 1)*2-1, randDouble(seed * 2)*2-1, randDouble(seed * 3)*2-1).unit
   }
 }
