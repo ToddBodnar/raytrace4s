@@ -21,7 +21,7 @@ object Main extends App {
   val nice = new Config(1000, 500, 10, 20)
   val print = new Config(1000, 500, 20, 50)
 
-  val currentConfig = fastbig
+  val currentConfig = print
   
   
   def endBookOne(): WorldRenderer = {
