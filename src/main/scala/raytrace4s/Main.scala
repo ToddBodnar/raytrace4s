@@ -24,8 +24,9 @@ object Main extends App {
   val nicemoresubs = new Config(1000, 500, 10, 200)
   val print = new Config(1000, 500, 20, 50)
   val printmoresubs = new Config(1000, 500, 20, 500)
+  val printevenmoresubs = new Config(1000, 500, 20, 2500)
 
-  val currentConfig = printmoresubs
+  val currentConfig = printevenmoresubs
   
   
   def endBookOne(): WorldRenderer = {
@@ -110,7 +111,9 @@ object Main extends App {
         new Sphere(new Vector3d(2, 0.5, 0), 1, MaterialFactory.basicMaterial(new ColorTexture(new Color(1, 0,0)))),
       new Sphere(new Vector3d(0, 0.5, 0), 1, MaterialFactory.basicMaterial(new ImageSphereTexture(ImageIO.read(new File("earth.jpg")), new Vector3d(0, 0.5, 0)))),
       new Sphere(new Vector3d(-2, 0.5, 0), 1, MaterialFactory.basicMaterial(new PerlinTexture(new ColorTexture(new Color(.995,.995,.995)), new ColorTexture(new Color(.005,.005,.005)), 1))),
-      new Sphere(new Vector3d(0,4,-2), 1, new LightMaterial(new Color(100,100,100))))
+      new Sphere(new Vector3d(0,4,-2), 1, new LightMaterial(new Color(500,500,500))),
+      new Sphere(new Vector3d(6,3,-2), 1, new LightMaterial(new Color(100,100,100))),
+      new Sphere(new Vector3d(-.65,1,8), 1, new LightMaterial(new Color(100,100,100))))
       
       
      new WorldRenderer(camera, new World(new DarkSkyMaterial(), shapes))
