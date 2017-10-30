@@ -16,7 +16,7 @@ class ImageWriter(config: Config, renderer: Renderer) {
       .par
       .foreach(pixel =>
         {
-          result.setRGB(pixel._1, config.height - pixel._2 - 1, renderer.render(pixel._1, pixel._2, config).hex)
+          result.setRGB(pixel._1, config.height - pixel._2 - 1, renderer.render(pixel._1, pixel._2, config).normalize.hex)
           progressBar.step
         })
     progressBar.stop

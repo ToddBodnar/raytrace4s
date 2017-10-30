@@ -11,16 +11,16 @@ class WorldRenderer(camera:Camera, world: World) extends Renderer{
     val origin = new Vector3d(0, 0, 0)
     val lowerLeft = new Vector3d(-2, -1, -1)
 
-    def render(xCt: Int, yCt: Int, acc: Vector3d): Vector3d = {
+    def render(xCt: Int, yCt: Int, acc: BigVector3d): BigVector3d = {
       if (yCt >= config.sqrtSubSamples) {
         acc
       } else if (xCt >= config.sqrtSubSamples) {
         render(0, yCt + 1, acc)
       } else {
-        render(xCt + 1, yCt, acc + (world.fire(camera.getRay((x + 1.0 * xCt / config.sqrtSubSamples - 0.5) / config.width , (y + 1.0 * yCt / config.sqrtSubSamples - 0.5) / config.height), config.maxBounces).vector / config.sqrtSubSamples / config.sqrtSubSamples))
+        render(xCt + 1, yCt, acc + (world.fire(camera.getRay((x + 1.0 * xCt / config.sqrtSubSamples - 0.5) / config.width , (y + 1.0 * yCt / config.sqrtSubSamples - 0.5) / config.height), config.maxBounces).vector.bigVector / config.sqrtSubSamples / config.sqrtSubSamples))
       }
     }
-    new Color(render(0, 0, new Vector3d(0, 0, 0)))
+    new Color(render(0, 0, new BigVector3d(BigDecimal(0.0), BigDecimal(0.0), BigDecimal(0.0))).littleVector())
   }
 
 }

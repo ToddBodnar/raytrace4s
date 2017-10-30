@@ -17,16 +17,18 @@ object Main extends App {
   val maxsteps = 10
 
   val fast = new Config(100, 50, 5, 10)
-  val fastmoresubs = new Config(100, 50, 5, 100)
+  val fastmoresubs = new Config(100, 50, 50, 10)
   val fastbig = new Config(1000, 500, 5, 10)
-  val fastbigmoresubs = new Config(1000, 500, 5, 100)
-  val nice = new Config(1000, 500, 10, 20)
-  val nicemoresubs = new Config(1000, 500, 10, 200)
-  val print = new Config(1000, 500, 20, 50)
-  val printmoresubs = new Config(1000, 500, 20, 500)
-  val printevenmoresubs = new Config(1000, 500, 20, 2500)
+  val fastbigmoresubs = new Config(1000, 500, 50, 10)
+  val nice = new Config(1000, 500, 100, 20)
+  val nicemoresubs = new Config(1000, 500, 100, 20)
+  val print = new Config(1000, 500, 100, 50)
+  val printmoresubs = new Config(1000, 500, 200, 50)
+  val printevenmoresubs = new Config(1000, 500, 400, 50)
+  
+  val toomanysubstest = new Config(100,50,2500, 50)
 
-  val currentConfig = printevenmoresubs
+  val currentConfig = print
   
   
   def endBookOne(): WorldRenderer = {

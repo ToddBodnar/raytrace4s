@@ -21,5 +21,7 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
   def apply(f: Double => Double): Vector3d = new Vector3d(f(x), f(y), f(z))
   def reduce(f: (Double, Double) => Double): Double = f(f(x,y),z)
   
+  def bigVector(): BigVector3d = new BigVector3d(BigDecimal(x), BigDecimal(y), BigDecimal(z))
+  
   override def toString(): String = "["+x+","+y+","+z+"]"
 }

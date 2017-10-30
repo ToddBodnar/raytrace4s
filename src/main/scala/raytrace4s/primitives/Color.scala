@@ -12,6 +12,7 @@ class Color(red: Double, blue: Double, green: Double) {
       new Color(vector * (porportion) + other.vector * (1 - porportion))
     }
   }
+  def normalize = new Color(math.min(1, red), math.min(1, blue), math.min(1, green))
   def vector = new Vector3d(red, blue, green)
   def hex: Int = (math.round(red * 255) * 256 * 256 + math.round(blue * 255) * 256 + math.round(green * 255)).toInt
 }
