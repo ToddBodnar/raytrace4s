@@ -1,7 +1,14 @@
 package raytrace4s.shapes
-import raytrace4s.primitives.{ Material, Ray, Vector3d }
+import raytrace4s.primitives.{ MaterialFactory, Material, Ray, Vector3d }
+import raytrace4s.tools.JsonFields
 
 class Sphere(val center: Vector3d, val radius: Double, material: Material) extends Shape {
+  def this(map: Map[String, Any]){
+    this(new Vector3d(map(JsonFields.OBJECT_CENTER_VECTOR).asInstanceOf[Map[String, Any]]), 
+         map(JsonFields.OBJECT_SCALE).asInstanceOf[Double], 
+         MaterialFactory.load(map(JsonFields.OBJECT_MATERIAL).asInstanceOf[Map[String, Any]]))
+  }
+
   def intersect(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material) = {
     def centeredCollision(centeredCenter: Vector3d): Double = {
       val a = ray.direction dot ray.direction

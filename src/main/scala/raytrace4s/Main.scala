@@ -1,6 +1,7 @@
 package raytrace4s
 
 import scala.App
+import scala.io.Source
 import primitives._
 import tools._
 import shapes._
@@ -28,7 +29,7 @@ object Main extends App {
   
   val toomanysubstest = new Config(100,50,2500, 50)
 
-  val currentConfig = print
+  val currentConfig = fastbig
   
   
   def endBookOne(): WorldRenderer = {
@@ -118,7 +119,8 @@ object Main extends App {
       new Sphere(new Vector3d(-.65,1,8), 1, new LightMaterial(new Color(100,100,100))))
       
       
-     new WorldRenderer(camera, new World(new DarkSkyMaterial(), shapes))
+     //new WorldRenderer(camera, new World(new DarkSkyMaterial(), shapes))
+      new WorldRenderer(SceneLoader.load(Source.fromFile("scenes/textureGenerators.json").mkString))
   }
   
   new ImageWriter(currentConfig, textureGenerators()).write("test")

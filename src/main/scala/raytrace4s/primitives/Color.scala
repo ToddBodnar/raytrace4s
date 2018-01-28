@@ -1,6 +1,7 @@
 package raytrace4s.primitives
 
 class Color(red: Double, blue: Double, green: Double) {
+  def this(map: Map[String, Any]) = this(map("r").asInstanceOf[Double],map("g").asInstanceOf[Double],map("b").asInstanceOf[Double])
   def this(vec: Vector3d) = this(vec.x, vec.y, vec.z)
   def this(pixel: Integer) = this(((pixel & 0x00ff0000) >> 16) / 255.0, ((pixel & 0x0000ff00) >> 8) / 255.0, (pixel & 0x000000ff) / 255.0)
   def merge(other: => Color, porportion: Double): Color = {

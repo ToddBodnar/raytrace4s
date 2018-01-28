@@ -3,6 +3,7 @@ import raytrace4s.primitives._
 import raytrace4s.shapes.Shape
 
 class WorldRenderer(camera:Camera, world: World) extends Renderer{
+  def this(config:(Camera, World)) = this(config._1, config._2)
 
   def render(x: Int, y: Int, config: Config): Color = {
 
