@@ -16,8 +16,13 @@ object MaterialFactory {
         new LightMaterial(new Color(map))
       }
       case JsonFields.MATERIAL_CUSTOM => {
-        //todo: implement fully
-        basicMaterial(new Color(1.0,1.0,1.0))
+        new Material(TextureFactory.load(map(JsonFields.TEXTURE_FIELD).asInstanceOf[Map[String,Any]]),
+            map(JsonFields.MATERIAL_DIFFUSE).asInstanceOf[Double],
+            map(JsonFields.MATERIAL_LIGHT_DAMPENING).asInstanceOf[Double],
+            map(JsonFields.MATERIAL_REFLECTION_AMOUNT).asInstanceOf[Double],
+            map(JsonFields.MATERIAL_REFLECTION_FUZZINESS).asInstanceOf[Double],
+            map(JsonFields.MATERIAL_TRANSPARENCY).asInstanceOf[Double],
+            map(JsonFields.MATERIAL_REFRACTION_INDEX).asInstanceOf[Double])
       }
     }
   }

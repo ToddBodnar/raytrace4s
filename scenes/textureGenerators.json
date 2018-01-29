@@ -73,7 +73,7 @@
 			"type": "textureMaterial",
 			"texture": {
 				"type": "image",
-				"image": "earth.jpg",
+				"image": "images/earth.jpg",
 				"origin": {
 					"x": 0,
 					"y": 0.5,

@@ -1,0 +1,102 @@
+{
+	"camera": {
+		"fov": 50,
+		"aspect": 2,
+		"origin": {
+			"x": -2,
+			"y": 1,
+			"z": -4
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+			"x": 0,
+			"y": 0.5,
+			"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 3.8
+	},
+	"objects": [{
+			"type": "sphere",
+			"center": {
+				"x": 4,
+				"y": 0.5,
+				"z": 0
+			},
+			"scale": 1,
+			"material": {
+				"type": "customMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.5,
+				"reflectionAmount": 0.95,
+				"reflectionFuzziness": 0.05,
+				"transparency": 0,
+				"refractionIndex": 0
+			}
+		},
+		{
+			"type": "sphere",
+			"center": {
+				"x": 0,
+				"y": 0.5,
+				"z": 0
+			},
+			"scale": 1,
+			"material": {
+				"type": "textureMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				}
+			}
+		},
+		{
+			"type": "sphere",
+			"center": {
+				"x": -3,
+				"y": 0.5,
+				"z": 0
+			},
+			"scale": 1,
+			"material": {
+				"type": "customMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.5,
+				"reflectionAmount": 0.0,
+				"reflectionFuzziness": 0.00,
+				"transparency": 1,
+				"refractionIndex": 1.5
+			}
+		}
+	],
+	"sky": {
+		"type": "textureSky",
+		"texture": {
+			"type": "image",
+			"image": "images/seesh mahal.jpg",
+			"origin": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			}
+		}
+	}
+}

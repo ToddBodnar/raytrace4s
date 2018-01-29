@@ -35,6 +35,7 @@ object SceneLoader {
     json(JsonFields.SKY_OBJECT_TYPE) match {
       case JsonFields.NORMAL_SKY => new SkyMaterial()
       case JsonFields.DARK_SKY => new DarkSkyMaterial()
+      case JsonFields.TEXTURE_SKY => new TextureSkyMaterial(json)
     }
   }
 }

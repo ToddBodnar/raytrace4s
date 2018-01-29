@@ -27,9 +27,18 @@ object Main extends App {
   val printmoresubs = new Config(1000, 500, 200, 50)
   val printevenmoresubs = new Config(1000, 500, 400, 50)
   
+  val configs = Map("fast" -> fast, "fastbig" -> fastbig, "print" -> print, "printmoresubs" -> printmoresubs)
+  
   val toomanysubstest = new Config(100,50,2500, 50)
-
-  val currentConfig = fastbig
+  
+  val defaultConfig = fastbig
+  val defaultFile = "panorama_cathedral"
+  
+  val currentConfig = if (args.length < 2) defaultConfig else configs(args(1))
+  
+  val file = if (args.length < 1) defaultFile else args(0)
+  
+  
   
   
   def endBookOne(): WorldRenderer = {
@@ -106,22 +115,9 @@ object Main extends App {
      new WorldRenderer(camera, new World(shapes))
   }
   
-  def textureGenerators(): WorldRenderer = {
-    val camera = new Camera(50, 2, new Vector3d(-2,1,-4), new Vector3d(0,1,0), new Vector3d(0,0.5, 0), .01, 3.8)
-    val world = new Sphere(new Vector3d(0, -10000.5, -1), 10000, MaterialFactory.basicMaterial(new CheckeredTexture(new ColorTexture(new Color(.005,.005,.005)), new ColorTexture(new Color(.995,.995,.995)), .1)))
-
-    val shapes = List(world,
-        new Sphere(new Vector3d(2, 0.5, 0), 1, MaterialFactory.basicMaterial(new ColorTexture(new Color(1, 0,0)))),
-      new Sphere(new Vector3d(0, 0.5, 0), 1, MaterialFactory.basicMaterial(new ImageSphereTexture(ImageIO.read(new File("earth.jpg")), new Vector3d(0, 0.5, 0)))),
-      new Sphere(new Vector3d(-2, 0.5, 0), 1, MaterialFactory.basicMaterial(new PerlinTexture(new ColorTexture(new Color(.995,.995,.995)), new ColorTexture(new Color(.005,.005,.005)), 1))),
-      new Sphere(new Vector3d(0,4,-2), 1, new LightMaterial(new Color(500,500,500))),
-      new Sphere(new Vector3d(6,3,-2), 1, new LightMaterial(new Color(100,100,100))),
-      new Sphere(new Vector3d(-.65,1,8), 1, new LightMaterial(new Color(100,100,100))))
-      
-      
-     //new WorldRenderer(camera, new World(new DarkSkyMaterial(), shapes))
-      new WorldRenderer(SceneLoader.load(Source.fromFile("scenes/textureGenerators.json").mkString))
+  def render(sceneName: String) {
+    new ImageWriter(currentConfig, new WorldRenderer(SceneLoader.load(Source.fromFile("scenes/" + sceneName + ".json").mkString))).write("renders/" + sceneName)
   }
   
-  new ImageWriter(currentConfig, textureGenerators()).write("test")
+  render(file)
 }

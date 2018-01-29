@@ -26,6 +26,12 @@ object JsonFields {
   val MATERIAL_BASIC_TEXTURE = "textureMaterial"
   val MATERIAL_LIGHT = "lightMaterial"
   val MATERIAL_CUSTOM = "customMaterial"
+  val MATERIAL_DIFFUSE = "diffuseAmt"
+  val MATERIAL_LIGHT_DAMPENING = "lightDampening"
+  val MATERIAL_REFLECTION_AMOUNT = "reflectionAmount"
+  val MATERIAL_REFLECTION_FUZZINESS = "reflectionFuzziness"
+  val MATERIAL_TRANSPARENCY = "transparency"
+  val MATERIAL_REFRACTION_INDEX = "refractionIndex"
   
   val TEXTURE_FIELD = "texture"
   
@@ -33,5 +39,6 @@ object JsonFields {
   val SKY_OBJECT_TYPE = "type"
   val NORMAL_SKY = "blue"
   val DARK_SKY = "dark"
+  val TEXTURE_SKY = "textureSky"
   
 }
