@@ -53,13 +53,19 @@
 			},
 			"scale": 1,
 			"material": {
-				"type": "textureMaterial",
+				"type": "customMaterial",
 				"texture": {
 					"type": "color",
 					"r": 0.995,
 					"g": 0.995,
 					"b": 0.995
-				}
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.85,
+				"reflectionAmount": 0.0,
+				"reflectionFuzziness": 0.00,
+				"transparency": 0,
+				"refractionIndex": 0
 			}
 		},
 		{
