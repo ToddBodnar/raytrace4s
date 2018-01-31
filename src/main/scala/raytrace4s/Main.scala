@@ -31,8 +31,8 @@ object Main extends App {
   
   val toomanysubstest = new Config(100,50,2500, 50)
   
-  val defaultConfig = fastbig
-  val defaultFile = "panorama_seesh_mahal"
+  val defaultConfig = print
+  val defaultFile = "panorama_cathedral"
   
   val currentConfig = if (args.length < 2) defaultConfig else configs(args(1))
   
