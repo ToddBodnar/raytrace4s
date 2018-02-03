@@ -31,8 +31,8 @@ object Main extends App {
   
   val toomanysubstest = new Config(100,50,2500, 50)
   
-  val defaultConfig = print
-  val defaultFile = "panorama_cathedral"
+  val defaultConfig = fastbig
+  val defaultFile = "rotation"
   
   val currentConfig = if (args.length < 2) defaultConfig else configs(args(1))
   
@@ -41,7 +41,7 @@ object Main extends App {
   
   
   
-  def endBookOne(): WorldRenderer = {
+  /*def endBookOne(): WorldRenderer = {
     val world = new Sphere(new Vector3d(0, -10000.5, -1), 10000, new Material(new Color(.8, .8, .8), 0.25, 0.5, 0, 0, 0, 0))
 
     def genSpheres(ct: Int): List[Sphere] = {
@@ -113,7 +113,7 @@ object Main extends App {
       
       
      new WorldRenderer(camera, new World(shapes))
-  }
+  }*/
   
   def render(sceneName: String) {
     new ImageWriter(currentConfig, new WorldRenderer(SceneLoader.load(Source.fromFile("scenes/" + sceneName + ".json").mkString))).write("renders/" + sceneName)

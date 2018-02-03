@@ -1,5 +1,7 @@
 package raytrace4s.primitives
 
+import raytrace4s.tools.JsonFields
+
 class Vector3d(val x: Double, val y: Double, val z: Double) {
   def this (map: Map[String, Any]){
     this(map.get("x").get.toString().toDouble, map.get("y").get.toString().toDouble, map.get("z").get.toString().toDouble)
@@ -25,6 +27,22 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
   def reduce(f: (Double, Double) => Double): Double = f(f(x,y),z)
   
   def bigVector(): BigVector3d = new BigVector3d(BigDecimal(x), BigDecimal(y), BigDecimal(z))
+  
+  def rotate(map: Map[String, Double]): Vector3d = rotate(map(JsonFields.ROTATION_YAW), map(JsonFields.ROTATION_PITCH), map(JsonFields.ROTATION_ROLL))
+  
+  def rotate(yaw: Double, pitch: Double, roll: Double): Vector3d = {
+    new Vector3d(Math.cos(yaw) * Math.cos(pitch) * x +
+        (Math.cos(yaw) * Math.sin(pitch) * Math.sin(roll) - Math.sin(yaw) * Math.cos(roll)) * y +
+        (Math.cos(yaw) * Math.sin(pitch) * Math.cos(roll) + Math.sin(yaw) * Math.sin(roll)) * z,
+        
+        Math.sin(yaw) * Math.cos(pitch) * x + 
+        (Math.sin(yaw) * Math.sin(pitch) * Math.sin(roll) + Math.cos(yaw) * Math.cos(roll)) * y +
+        (Math.sin(yaw) * Math.sin(pitch) * Math.cos(roll) - Math.cos(yaw) * Math.sin(roll)) * z,
+        
+        - Math.sin(pitch) * x + 
+        Math.cos(pitch) * Math.sin(roll) * y + 
+        Math.cos(pitch) * Math.cos(roll) * z)
+  }
   
   override def toString(): String = "["+x+","+y+","+z+"]"
 }

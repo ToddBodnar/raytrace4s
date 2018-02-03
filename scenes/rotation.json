@@ -1,0 +1,110 @@
+{
+	"camera": {
+		"fov": 5,
+		"aspect": 2,
+		"origin": {
+				"x": 0,
+				"y": 0.5,
+				"z": -40
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+				"x": 0,
+				"y": 0.5,
+				"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 40
+	},
+	"objects": [{
+			"type": "sphere",
+			"center": {
+				"x": 2.5,
+				"y": 0.5,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":1,
+				"pitch":0,
+				"roll":0
+			},
+			"scale": 1,
+			"material": {
+			"type": "textureMaterial",
+			"texture": {
+				"type": "image",
+				"image": "images/earth.jpg",
+				"rotation":{
+					"yaw":0,
+					"pitch":-1,
+					"roll":0
+				},"center": {
+					"x": 2.5,
+					"y": 0.5,
+					"z": 0
+				}
+			}}
+		},
+		{
+			"type": "sphere",
+			"center": {
+				"x": 0,
+				"y": 0.5,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
+			"scale": 1,
+			"material": {
+			"type": "textureMaterial",
+			"texture": {
+				"type": "image",
+				"image": "images/earth.jpg",
+				"center": {
+					"x": 0,
+					"y": 0.5,
+					"z": 0
+				}
+			}}
+		},
+		{
+			"type": "sphere",
+			"center": {
+				"x": -2.5,
+				"y": 0.5,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":1,
+				"roll":0
+			},
+			"scale": 1,
+			"material": {
+			"type": "textureMaterial",
+			"texture": {
+				"type": "image",
+				"image": "images/earth.jpg",
+				"rotation":{
+					"yaw":0,
+					"pitch":1,
+					"roll":0
+				},"center": {
+					"x": -2.5,
+					"y": 0.5,
+					"z": 0
+				}
+			}}
+		}
+	],
+	"sky": {
+		"type": "blue"
+	}
+}

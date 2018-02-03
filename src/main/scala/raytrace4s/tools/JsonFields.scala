@@ -4,6 +4,11 @@ object JsonFields {
   val OBJECT_CENTER_VECTOR = "center"
   val OBJECT_SCALE = "scale"
   val OBJECT_MATERIAL = "material"
+  val OBJECT_ROTATION = "rotation"
+  
+  val ROTATION_YAW = "yaw"
+  val ROTATION_PITCH = "pitch"
+  val ROTATION_ROLL = "roll"
   
   val CAMERA_VERTICAL_FOV = "fov"
   val CAMERA_ASPECT_RATIO = "aspect"

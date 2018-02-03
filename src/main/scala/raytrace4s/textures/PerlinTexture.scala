@@ -2,8 +2,8 @@ package raytrace4s.textures
 import raytrace4s.primitives.{Material, Vector3d, Color}
 import raytrace4s.tools.{Randomizer}
 
-class PerlinTexture (t1: Texture, t2: Texture, scale: Double) extends Texture{
-  def colorAt(point: Vector3d): Color = {
+class PerlinTexture (t1: Texture, t2: Texture, scale: Double, location: Vector3d, rotation: Map[String, Double]) extends Texture(location, rotation){
+  def colorAtInternal(point: Vector3d): Color = {
     //todo: make this function modifiable through args
     val res = Math.max(0, Math.min(1, 0.5 * (1 + Math.sin(scale*point.z + 10 * turbulance(point)))))
       
