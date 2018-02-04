@@ -30,6 +30,8 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
   
   def rotate(map: Map[String, Double]): Vector3d = rotate(map(JsonFields.ROTATION_YAW), map(JsonFields.ROTATION_PITCH), map(JsonFields.ROTATION_ROLL))
   
+  def rotateReverse(map: Map[String, Double]): Vector3d = rotate(-map(JsonFields.ROTATION_YAW), -map(JsonFields.ROTATION_PITCH), -map(JsonFields.ROTATION_ROLL))
+  
   def rotate(yaw: Double, pitch: Double, roll: Double): Vector3d = {
     new Vector3d(Math.cos(yaw) * Math.cos(pitch) * x +
         (Math.cos(yaw) * Math.sin(pitch) * Math.sin(roll) - Math.sin(yaw) * Math.cos(roll)) * y +

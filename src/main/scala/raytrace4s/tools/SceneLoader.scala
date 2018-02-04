@@ -28,6 +28,7 @@ object SceneLoader {
     val objTyp = json(JsonFields.OBJECT_TYPE)
     objTyp match {
       case JsonFields.SPHERE => new Sphere(json)
+      case JsonFields.TRIANGLE => new Triangle(json)
     }
   }
   

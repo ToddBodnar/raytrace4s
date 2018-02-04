@@ -6,6 +6,10 @@ object JsonFields {
   val OBJECT_MATERIAL = "material"
   val OBJECT_ROTATION = "rotation"
   
+  val TRIANGLE_V1 = "v1"
+  val TRIANGLE_V2 = "v2"
+  val TRIANGLE_V3 = "v3"
+  
   val ROTATION_YAW = "yaw"
   val ROTATION_PITCH = "pitch"
   val ROTATION_ROLL = "roll"
@@ -23,6 +27,7 @@ object JsonFields {
   
   val OBJECT_TYPE = "type"
   val SPHERE = "sphere"
+  val TRIANGLE = "triangle"
   val SKY_BOX = "sky_box"
   
   val MATERIAL_TYPE = "type"

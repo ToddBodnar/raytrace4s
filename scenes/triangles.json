@@ -1,0 +1,252 @@
+{
+	"camera": {
+		"fov": 5,
+		"aspect": 2,
+		"origin": {
+				"x": 0,
+				"y": 0.5,
+				"z": -40
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+				"x": 0,
+				"y": 0.5,
+				"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 40
+	},
+	"objects": [{
+			"type": "triangle",
+			"center": {
+				"x": 0,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
+			"v3": {
+				"x": 0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"v2": {
+				"x": 0.0,
+				"y": 1,
+				"z": 0.0
+			},
+			"v1": {
+				"x": -0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"material": {
+			"type": "textureMaterial",
+			"texture": {
+				"type": "checkered",
+				"scale": 0.1,
+				"textureTwo": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"textureOne": {
+					"type": "color",
+					"r": 0.005,
+					"g": 0.005,
+					"b": 0.005
+				},
+				"center":{
+					"x": 0,
+					"y": 2,
+					"z": 1
+				}
+			}
+		}
+		},
+		{
+			"type": "triangle",
+			"center": {
+				"x": 2,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
+			"v3": {
+				"x": 0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"v2": {
+				"x": 0.0,
+				"y": 1,
+				"z": 0.0
+			},
+			"v1": {
+				"x": -0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"material": {
+				"type": "textureMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.0,
+					"b": 0.0
+				}
+			}
+		},
+		{
+			"type": "triangle",
+			"center": {
+				"x": -2,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
+			"v3": {
+				"x": 0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"v2": {
+				"x": 0.0,
+				"y": 1,
+				"z": 0.0
+			},
+			"v1": {
+				"x": -0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"material": {
+				"type": "customMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.5,
+				"reflectionAmount": 1.0,
+				"reflectionFuzziness": 0.00,
+				"transparency": 0,
+				"refractionIndex": 0
+			}
+		},{
+			"type": "triangle",
+			"center": {
+				"x": -2,
+				"y": 1.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0.001,
+				"roll":0
+			},
+			"v3": {
+				"x": 0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"v2": {
+				"x": 0.0,
+				"y": 1,
+				"z": 0.0
+			},
+			"v1": {
+				"x": -0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"material": {
+				"type": "customMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.5,
+				"reflectionAmount": 1.0,
+				"reflectionFuzziness": 0.00,
+				"transparency": 0,
+				"refractionIndex": 0
+			}
+		},{
+			"type": "triangle",
+			"center": {
+				"x": -2,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":1,
+				"roll":3.14
+			},
+			"v1": {
+				"x": 0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"v2": {
+				"x": 0.0,
+				"y": 1,
+				"z": 0.0
+			},
+			"v3": {
+				"x": -0.7,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"material": {
+				"type": "customMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.5,
+				"reflectionAmount": 1.0,
+				"reflectionFuzziness": 0.00,
+				"transparency": 0,
+				"refractionIndex": 0
+			}
+		}
+	],
+	"sky": {
+		"type": "textureSky",
+		"texture": {
+			"type": "image",
+			"image": "images/seesh mahal.jpg",
+			"origin": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			}
+		}
+	}
+}
