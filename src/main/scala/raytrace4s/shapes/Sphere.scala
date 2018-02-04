@@ -38,4 +38,8 @@ class Sphere(val center: Vector3d, val radius: Double, material: Material, rotat
     //render normals
     //(distance, new Color((normal +1 )/2))
   }
+  
+  def bbox(): (Vector3d, Vector3d) = {
+    (new Vector3d(-radius, -radius, -radius), new Vector3d(radius, radius, radius))
+  }
 }

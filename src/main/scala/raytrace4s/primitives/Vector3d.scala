@@ -46,5 +46,8 @@ class Vector3d(val x: Double, val y: Double, val z: Double) {
         Math.cos(pitch) * Math.cos(roll) * z)
   }
   
+  def min(other: Vector3d): Vector3d = new Vector3d(Math.min(x, other.x), Math.min(y, other.y), Math.min(z, other.z))
+  def max(other: Vector3d): Vector3d = new Vector3d(Math.max(x, other.x), Math.max(y, other.y), Math.max(z, other.z))
+  
   override def toString(): String = "["+x+","+y+","+z+"]"
 }

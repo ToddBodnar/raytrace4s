@@ -20,6 +20,9 @@ class Triangle(v1: Vector3d, v2: Vector3d, v3: Vector3d, material: Material, cen
                             edge1.z * edge2.x - edge1.x * edge2.z,
                             edge1.x * edge2.y - edge1.y * edge2.x)
   
+  val bboxMin = v1.min(v2).min(v3) + (-0.001)
+  val bboxMax = v1.max(v2).max(v3) + 0.001
+  
   def intersectInternal(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material) = {
     // see https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection
     val p = ray.direction.cross(edge2)
@@ -45,5 +48,9 @@ class Triangle(v1: Vector3d, v2: Vector3d, v3: Vector3d, material: Material, cen
       (-1000, ray.origin, normal, material)
     else
       (t, ray.pointAt(t), normal, material)
+  }
+  
+  def bbox(): (Vector3d, Vector3d) = {
+    (bboxMin, bboxMax)
   }
 }

@@ -31,7 +31,7 @@ object Main extends App {
   
   val toomanysubstest = new Config(100,50,2500, 50)
   
-  val defaultConfig = nice
+  val defaultConfig = fast
   val defaultFile = "triangles"
   
   val currentConfig = if (args.length < 2) defaultConfig else configs(args(1))
