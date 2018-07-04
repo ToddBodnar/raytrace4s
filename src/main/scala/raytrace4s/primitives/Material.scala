@@ -1,5 +1,6 @@
 package raytrace4s.primitives
 import raytrace4s.textures.{ColorTexture, Texture}
+import raytrace4s.tools.Randomizer
 
 class Material(baseTexture: Texture, diffuseAmt: Double, lightDampening: Double, reflectionAmount: Double, reflectionFuzzy: Double, transparency: Double, refractionIndex: Double) {
   def this(baseColor: Color, diffuseAmt: Double, lightDampening: Double, reflectionAmount: Double, reflectionFuzzy: Double, transparency: Double, refractionIndex: Double) {
@@ -63,11 +64,22 @@ class Material(baseTexture: Texture, diffuseAmt: Double, lightDampening: Double,
             val r0 = math.pow((1 - refractionIndex) / (1 + refractionIndex), 2)
             r0 + (1 - r0) * math.pow(1 - cos, 5)
           }
-          fireRay(getRayDirection).merge(fireRay(reflect + (getP * reflectionFuzzy)), 1 - schlick)
+          if (schlick < 0 && Randomizer.randDouble(ray.direction.y + ray.direction.z) < schlick)
+            fireRay(reflect + (getP * reflectionFuzzy))
+          else
+            fireRay(getRayDirection)
+          //fireRay(getRayDirection).merge(fireRay(reflect + (getP * reflectionFuzzy)), 1 - schlick)
         }
       }
 
-      diffusedColor.merge(reflectionColor, 1 - reflectionAmount).merge(refractedColor, 1 - transparency)
+      if (reflectionAmount > 0 && Randomizer.randDouble(ray.direction.x + ray.direction.y) < reflectionAmount)
+        reflectionColor()
+      else if (transparency > 0 && Randomizer.randDouble(ray.direction.x + ray.direction.z) < transparency)
+        refractedColor()
+      else
+        diffusedColor()
+        
+      //diffusedColor.merge(reflectionColor, 1 - reflectionAmount).merge(refractedColor, 1 - transparency)
     }
   }
 }

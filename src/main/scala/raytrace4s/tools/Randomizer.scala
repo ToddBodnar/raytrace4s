@@ -16,8 +16,9 @@ object Randomizer {
         randomize((t>>32)|(t<<32), w+seed, iteration - 1)
       }
     }
-    randomize(0,i,10)
+    randomize(0,i,3)
   }
+ 
   
   def randRange(seed: Long, max: Long): Long = {
     Math.abs(randomize(seed)) % max
@@ -25,6 +26,10 @@ object Randomizer {
   
   def randDouble(seed: Long): Double = {
     randRange(seed, 10000) / 10000.0
+  }
+  
+  def randDouble(seed: Double): Double = {
+    randDouble((seed * 1000).toLong)
   }
   
   def randUnit(seed: Long): Vector3d = {

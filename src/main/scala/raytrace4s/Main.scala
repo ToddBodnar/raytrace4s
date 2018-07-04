@@ -31,8 +31,8 @@ object Main extends App {
   
   val toomanysubstest = new Config(100,50,2500, 50)
   
-  val defaultConfig = fast
-  val defaultFile = "triangles"
+  val defaultConfig = fastbig
+  val defaultFile = "panorama_seesh_mahal"
   
   val currentConfig = if (args.length < 2) defaultConfig else configs(args(1))
   
@@ -116,7 +116,7 @@ object Main extends App {
   }*/
   
   def render(sceneName: String) {
-    new ImageWriter(currentConfig, new WorldRenderer(SceneLoader.load(Source.fromFile("scenes/" + sceneName + ".json").mkString))).write("renders/" + sceneName)
+    new ImageWriter(currentConfig, (new WorldRenderer(SceneLoader.load(Source.fromFile("scenes/" + sceneName + ".json").mkString)))).write("renders/" + sceneName)
   }
   
   render(file)

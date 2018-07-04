@@ -27,6 +27,11 @@
 				"y": 0.5,
 				"z": 0
 			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
 			"scale": 1,
 			"material": {
 				"type": "customMaterial",
@@ -51,6 +56,11 @@
 				"y": 0.5,
 				"z": 0
 			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
 			"scale": 1,
 			"material": {
 				"type": "textureMaterial",
@@ -68,6 +78,11 @@
 				"x": -3,
 				"y": 0.5,
 				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
 			},
 			"scale": 1,
 			"material": {
