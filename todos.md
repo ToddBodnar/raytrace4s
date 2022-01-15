@@ -2,7 +2,7 @@
 
 Some general ideas of how this can be extended, in rough order of what I'd like to work on:
 
-- [ ] Clean up `Main`
+- [x] Clean up `Main`
 - [ ] Bounding box / grouping support (needed for `.3ds` to be easy)
 - [ ] `.3ds` support (teapot render?)
 - [ ] Rectangle / Cube (just based on a group of triangles)
