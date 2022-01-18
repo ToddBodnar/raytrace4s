@@ -9,7 +9,7 @@ class World(val skybox: Material, val shapes: List[Shape]) {
       if (subShapes.isEmpty) {
         bestSoFar
       } else {
-        def merge(newResult: (Double, Vector3d, Vector3d, Material)) = if (newResult._1 > 0.00001 && newResult._1 < bestSoFar._1) newResult else bestSoFar
+        def merge(newResult: Option[(Double, Vector3d, Vector3d, Material)]) = if (!newResult.isEmpty && newResult.get._1 > 0.00001) newResult.get else bestSoFar
         findNearest(subShapes.tail, merge(subShapes.head.intersect(ray, bouncesRemaining)))
       }
     }

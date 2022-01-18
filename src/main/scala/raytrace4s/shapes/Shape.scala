@@ -4,23 +4,28 @@ abstract class Shape(location: Vector3d, rotation: Map[String, Double]) {
   val defaultMaterial = MaterialFactory.basicMaterial(new Color(0,0,0))
   
   //todo: make returned object optional
-  def intersect(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material) = {
+  def intersect(ray: Ray, bounces: Int): Option[(Double, Vector3d, Vector3d, Material)] = {
     val transformed = ray.translate(location).rotate(rotation)
     
     if (!inBbox(transformed))
-      return (-1000, location, location, defaultMaterial)
+      return None
     
-    val (t, loc, norm, mat) = intersectInternal(transformed, bounces)
-    // don't waste time reversing the rays if there was no hit
-    if (t > 0)
-      (t, loc + location, norm.rotateReverse(rotation), mat)
-    else
-      (t, loc, norm, mat)
+    intersectInternal(transformed, bounces) match {
+      case None => None
+      case Some((t: Double, loc: Vector3d, norm: Vector3d, mat: Material)) => {
+        // don't waste time reversing the rays if there was no hit
+        
+        if (t > 0)
+          Some((t, loc + location, norm.rotateReverse(rotation), mat))
+        else
+          Some((t, loc, norm, mat))
+      }
+    }
   }
   /**
    * Calculate when the ray intersects the object, or nil if it doesn't
    */
-  def intersectInternal(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material)
+  def intersectInternal(ray: Ray, bounces: Int): Option[(Double, Vector3d, Vector3d, Material)]
   
   def bbox(): (Vector3d, Vector3d)
   

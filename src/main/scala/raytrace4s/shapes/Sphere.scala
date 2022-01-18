@@ -10,33 +10,39 @@ class Sphere(val center: Vector3d, val radius: Double, material: Material, rotat
          map(JsonFields.OBJECT_ROTATION).asInstanceOf[Map[String, Double]])
   }
 
-  def intersectInternal(ray: Ray, bounces: Int): (Double, Vector3d, Vector3d, Material) = {
-    def centeredCollision(centeredCenter: Vector3d): Double = {
+  def intersectInternal(ray: Ray, bounces: Int): Option[(Double, Vector3d, Vector3d, Material)] = {
+    def centeredCollision(centeredCenter: Vector3d): Option[Double] = {
       val a = ray.direction dot ray.direction
       val b = (centeredCenter dot ray.direction)
       val c = (centeredCenter dot centeredCenter) - radius * radius
       val descriminant = b * b - (a * c)
       if (descriminant <= 0.0001) {
-        -1
+        None
       } else {
         if ((-b - math.sqrt(descriminant)) / a > 0) {
-          (-b - math.sqrt(descriminant)) / a
+          Some((-b - math.sqrt(descriminant)) / a)
         } else {
-          (-b + math.sqrt(descriminant)) / a
+          Some((-b + math.sqrt(descriminant)) / a)
         }
       }
     }
 
     val distance = centeredCollision(ray.origin)
 
-    def normal(): Vector3d = {
-      ((ray.pointAt(distance)) / radius)
+    distance match {
+        case None => None
+        case Some(dist) => {
+            def normal(): Vector3d = {
+              ((ray.pointAt(dist)) / radius)
+            }
+            //keep these two lines separate for later stuff
+            //(distance, baseColor.merge(getNextBounce, diffuseAmount))
+            Some((dist, ray.pointAt(dist), normal, material))
+            //render normals
+            //(distance, new Color((normal +1 )/2))
+        }
     }
-    //keep these two lines separate for later stuff
-    //(distance, baseColor.merge(getNextBounce, diffuseAmount))
-    (distance, ray.pointAt(distance), normal, material)
-    //render normals
-    //(distance, new Color((normal +1 )/2))
+    
   }
   
   def bbox(): (Vector3d, Vector3d) = {
