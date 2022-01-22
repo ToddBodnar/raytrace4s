@@ -27,8 +27,9 @@ object SceneLoader {
   def loadObject(json: Map[String, Any]): Shape = {
     val objTyp = json(JsonFields.OBJECT_TYPE)
     objTyp match {
-      case JsonFields.SPHERE => new Sphere(json)
-      case JsonFields.TRIANGLE => new Triangle(json)
+      case JsonFields.SHAPE_SPHERE => new Sphere(json)
+      case JsonFields.SHAPE_TRIANGLE => new Triangle(json)
+      case JsonFields.SHAPE_PLATONIC => PlatonicSolid.fromJson(json)
     }
   }
   

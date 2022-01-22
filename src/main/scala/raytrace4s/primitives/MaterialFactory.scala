@@ -5,6 +5,7 @@ import raytrace4s.tools.JsonFields
 object MaterialFactory {
   def load(map: Map[String, Any]): Material = {
     val materialType = map(JsonFields.MATERIAL_TYPE)
+    
     materialType match {
       case JsonFields.MATERIAL_BASIC_COLOR => {
         basicMaterial(new Color(map))

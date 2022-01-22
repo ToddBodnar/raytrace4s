@@ -26,8 +26,11 @@ object JsonFields {
   val OBJECT_LIST = "objects"
   
   val OBJECT_TYPE = "type"
-  val SPHERE = "sphere"
-  val TRIANGLE = "triangle"
+  val OBJECT_SUB_TYPE = "subType"
+  
+  val SHAPE_SPHERE = "sphere"
+  val SHAPE_TRIANGLE = "triangle"
+  val SHAPE_PLATONIC = "platonic"
   val SKY_BOX = "sky_box"
   
   val MATERIAL_TYPE = "type"

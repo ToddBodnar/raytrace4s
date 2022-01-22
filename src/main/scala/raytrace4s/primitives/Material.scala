@@ -59,7 +59,7 @@ class Material(baseTexture: Texture, diffuseAmt: Double, lightDampening: Double,
               refract(1 / refractionIndex, normal)
             }
           }
-          def schlick = {
+          val schlick = {
             val cos = (if ((ray.direction.unit dot normal) > 0) refractionIndex else -1) * (ray.direction.unit dot normal)
             val r0 = math.pow((1 - refractionIndex) / (1 + refractionIndex), 2)
             r0 + (1 - r0) * math.pow(1 - cos, 5)
@@ -71,10 +71,11 @@ class Material(baseTexture: Texture, diffuseAmt: Double, lightDampening: Double,
           //fireRay(getRayDirection).merge(fireRay(reflect + (getP * reflectionFuzzy)), 1 - schlick)
         }
       }
+    
 
-      if (reflectionAmount > 0 && Randomizer.randDouble(ray.direction.x + ray.direction.y) < reflectionAmount)
+      if (reflectionAmount > 0 && Randomizer.randDouble(ray.direction.x, ray.direction.y) < reflectionAmount)
         reflectionColor()
-      else if (transparency > 0 && Randomizer.randDouble(ray.direction.x + ray.direction.z) < transparency)
+      else if (transparency > 0 && Randomizer.randDouble(ray.direction.x, ray.direction.z) < transparency)
         refractedColor()
       else
         diffusedColor()
