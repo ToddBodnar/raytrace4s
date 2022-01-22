@@ -19,35 +19,43 @@ class Triangle(v1: Vector3d, v2: Vector3d, v3: Vector3d, material: Material, cen
   val normal = new Vector3d(edge1.y * edge2.z - edge1.z * edge2.y,
                             edge1.z * edge2.x - edge1.x * edge2.z,
                             edge1.x * edge2.y - edge1.y * edge2.x)
+                            
+  val flippedNormal = normal * (-1.0)
   
   val bboxMin = v1.min(v2).min(v3) + (-0.001)
   val bboxMax = v1.max(v2).max(v3) + 0.001
   
   def intersectInternal(ray: Ray, bounces: Int): Option[(Double, Vector3d, Vector3d, Material)] = {
     // see https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection
-    val p = ray.direction.cross(edge2)
+    var p = ray.direction.cross(edge2)
     
-    val determinate = edge1 dot p
+    var determinate = edge1 dot p
+    var flipped = false
     
-    if ( determinate <= 0)
-      return None
+    if ( determinate <= 0) {
+      p = ray.direction.cross(edge1)
+      determinate = edge2 dot p
+      flipped = true
+    }
     
     val tv = ray.origin - v1
     val u = tv dot p / determinate
     
-    if (u < 0 || u > 1)
+    if (u < 0 || u > 1) {
       return None
+    }
       
-    val q = tv cross edge1
+    val q = tv cross (if (flipped) edge2 else edge1)
     
     val v = ray.direction dot q / determinate
     
-    val t = edge2 dot q / determinate
+    val t = (if (flipped) edge1 else edge2) dot q / determinate
     
-    if (v < 0 || u + v > 1)
+    if (v < 0 || u + v > 1) {
       None
+    }  
     else
-      Some((t, ray.pointAt(t), normal, material))
+      Some((t, ray.pointAt(t), normal * (if (flipped) -1 else 1), material))
   }
   
   def bbox(): (Vector3d, Vector3d) = {

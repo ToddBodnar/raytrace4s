@@ -1,0 +1,217 @@
+{
+	"camera": {
+		"fov": 5,
+		"aspect": 2,
+		"origin": {
+				"x": 0,
+				"y": 0.5,
+				"z": -80
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+				"x": 0,
+				"y": 0.5,
+				"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 40
+	},
+	"objects": [{
+			"type": "platonic",
+      "subType": "pyramid",
+			"center": {
+				"x": 6,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0.5,
+				"pitch":0.5,
+				"roll":0.5
+			},
+			"material": {
+			"type": "textureMaterial",
+			"texture": {
+				"type": "checkered",
+				"scale": 0.1,
+				"textureTwo": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"textureOne": {
+					"type": "color",
+					"r": 0.005,
+					"g": 0.005,
+					"b": 0.005
+				},
+				"center":{
+					"x": 0,
+					"y": 2,
+					"z": 1
+				}
+			}
+		}
+		},
+    {
+  			"type": "platonic",
+        "subType": "cube",
+  			"center": {
+  				"x": 3,
+  				"y": 0.0,
+  				"z": 0
+  			},
+  			"rotation":{
+  				"yaw":0.7,
+  				"pitch":0.7,
+  				"roll":0.7
+  			},
+  			"material": {
+  			"type": "textureMaterial",
+  			"texture": {
+  				"type": "checkered",
+  				"scale": 0.1,
+  				"textureTwo": {
+  					"type": "color",
+  					"r": 0.995,
+  					"g": 0.995,
+  					"b": 0.995
+  				},
+  				"textureOne": {
+  					"type": "color",
+  					"r": 0.005,
+  					"g": 0.005,
+  					"b": 0.005
+  				},
+  				"center":{
+  					"x": 0,
+  					"y": 2,
+  					"z": 1
+  				}
+  			}
+  		}
+    },
+    {
+  			"type": "platonic",
+        "subType": "octahedron",
+  			"center": {
+  				"x": 0,
+  				"y": 0.0,
+  				"z": 0
+  			},
+  			"rotation":{
+  				"yaw":0.3,
+  				"pitch":0.3,
+  				"roll":0.3
+  			},
+        "v3": {
+  				"x": 1,
+  				"y": -1.0,
+  				"z": 0.0
+  			},
+  			"v2": {
+  				"x": 0.0,
+  				"y": 1,
+  				"z": 0.0
+  			},
+  			"v1": {
+  				"x": -1,
+  				"y": -1.0,
+  				"z": 0.0
+  			},
+  			"material": {
+					"type": "colorMaterial",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+  		}
+    },
+    {
+  			"type": "platonic",
+        "subType": "dodecahedron",
+  			"center": {
+  				"x": -3,
+  				"y": 0.0,
+  				"z": 0
+  			},
+  			"rotation":{
+  				"yaw":0.6,
+  				"pitch":0.6,
+  				"roll":0.6
+  			},
+        "v3": {
+  				"x": 1,
+  				"y": 0.0,
+  				"z": 0.0
+  			},
+  			"v2": {
+  				"x": 0.0,
+  				"y": 1,
+  				"z": 0.0
+  			},
+  			"v1": {
+  				"x": -1,
+  				"y": 0.0,
+  				"z": 0.0
+  			},
+				"material": {
+					"type": "colorMaterial",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+  		}
+    },
+    {
+  			"type": "platonic",
+        "subType": "icosahedron",
+  			"center": {
+  				"x": -6,
+  				"y": 0.0,
+  				"z": 0
+  			},
+  			"rotation":{
+  				"yaw":2,
+  				"pitch":2,
+  				"roll":2
+  			},
+        "v3": {
+  				"x": 1,
+  				"y": 0.0,
+  				"z": 0.0
+  			},
+  			"v2": {
+  				"x": 0.0,
+  				"y": 1,
+  				"z": 0.0
+  			},
+  			"v1": {
+  				"x": -1,
+  				"y": 0.0,
+  				"z": 0.0
+  			},
+  			"material": {
+  			"type": "colorMaterial",
+				"r": 0.995,
+				"g": 0.995,
+				"b": 0.995
+  		}
+  	}
+	],
+	"sky": {
+		"type": "blue",
+		"texture": {
+			"type": "image",
+			"image": "images/seesh mahal.jpg",
+			"origin": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			}
+		}
+	}
+}

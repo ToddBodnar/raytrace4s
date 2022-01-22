@@ -18,7 +18,7 @@ abstract class Shape(location: Vector3d, rotation: Map[String, Double]) {
         if (t > 0)
           Some((t, loc + location, norm.rotateReverse(rotation), mat))
         else
-          Some((t, loc, norm, mat))
+          None
       }
     }
   }

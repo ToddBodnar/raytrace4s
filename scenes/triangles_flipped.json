@@ -1,0 +1,71 @@
+{
+	"camera": {
+		"fov": 5,
+		"aspect": 2,
+		"origin": {
+				"x": 0,
+				"y": 0.5,
+				"z": -40
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+				"x": 0,
+				"y": 0.5,
+				"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 40
+	},
+	"objects": [
+		{
+			"type": "triangle",
+			"center": {
+				"x": 2,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0,
+				"pitch":0,
+				"roll":0
+			},
+			"v2": {
+				"x": 700,
+				"y": -100.0,
+				"z": 0.0
+			},
+			"v3": {
+				"x": 0.0,
+				"y": 100,
+				"z": 0.0
+			},
+			"v1": {
+				"x": -700,
+				"y": -100.0,
+				"z": 0.0
+			},
+			"material": {
+				"type": "lightMaterial",
+					"r": 0.995,
+					"g": 0.0,
+					"b": 0.0
+			}
+		}
+	],
+	"sky": {
+		"type": "textureSky",
+		"texture": {
+			"type": "image",
+			"image": "images/seesh mahal.jpg",
+			"origin": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			}
+		}
+	}
+}
