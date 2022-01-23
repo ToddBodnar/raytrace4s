@@ -1,11 +1,36 @@
 package raytrace4s.shapes
 import raytrace4s.primitives.{ MaterialFactory, Material, Ray, Vector3d }
-import raytrace4s.tools.JsonFields
+import raytrace4s.tools.{JsonFields, Randomizer}
 
-class PolygonCollection(val center: Vector3d, rotation: Map[String, Double], val polygons: List[Triangle]) extends Shape(center, rotation) {
+object PolygonCollectionBulder {
+  def build(center: Vector3d, rotation: Map[String, Double], polygons: List[Shape]): PolygonCollection  = {
+      if (polygons.length < 10) {
+          new PolygonCollection(center, rotation, polygons)
+      } else {
+          // "randomly" choose a dimension to divide the shapes by
+      
+          val randomNumber = Randomizer.randomize(polygons.length)
+          val sortByDim = if (randomNumber % 3 == 0) {
+              p: Shape => p.bbox()._1.x
+          } else if (randomNumber % 3 == 1) {
+              p: Shape => p.bbox()._1.y
+          } else {
+              p: Shape => p.bbox()._1.z
+          }
+        
+          
+          val (first, second) = polygons.sortBy(sortByDim).splitAt(polygons.length / 2)
+          
+          new PolygonCollection(center, rotation, List(build(center, rotation, first), build(center, rotation, second)))
+      }
+  }
+}
+
+class PolygonCollection(val center: Vector3d, rotation: Map[String, Double], val polygons: List[Shape]) extends Shape(center, rotation) {
 
   def intersectInternal(ray: Ray, bounces: Int): Option[(Double, Vector3d, Vector3d, Material)] = {
      val intersections = polygons
+        .filter(p => p.inBbox(ray))
         .map(p => p.intersectInternal(ray, bounces))
         .filter(r => !r.isEmpty)
         // get closest collision

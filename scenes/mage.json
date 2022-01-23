@@ -1,0 +1,88 @@
+{
+	"camera": {
+		"fov": 5,
+		"aspect": 2,
+		"origin": {
+				"x": -320,
+				"y": 30.0,
+				"z": -320
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+				"x": 0,
+				"y": 15.0,
+				"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 452.789
+	},
+	"objects": [{
+			"type": "imported",
+      "subType": "stl_bin",
+      "fileName": "shapefiles/minis/elf_mage_casting.stl",
+			"center": {
+				"x": 0,
+				"y": 0.0,
+				"z": 0
+			},
+			"rotation":{
+				"yaw":0.0,
+				"pitch":0.00,
+				"roll":0.0
+			},
+			"material": {
+				"type": "customMaterial",
+				"texture": {
+					"type": "color",
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+				},
+				"diffuseAmt": 0.25,
+				"lightDampening": 0.5,
+				"reflectionAmount": 0.0,
+				"reflectionFuzziness": 0.00,
+				"transparency": 0.75,
+				"refractionIndex": 2.5
+			}
+		},
+    {
+  			"type": "sphere",
+        "scale": 100,
+  			"center": {
+  				"x": -450000,
+  				"y": 400.0,
+  				"z": -250
+  			},
+  			"rotation":{
+  				"yaw":0,
+  				"pitch":0,
+  				"roll":0
+  			},
+  			"material": {
+          "type": "lightMaterial",
+          "r": 99.5,
+            "g": 99.90,
+            "b": 99.90
+          
+  			}
+  		
+    }
+	],
+	"sky": {
+		"type": "textureSky",
+		"texture": {
+			"type": "image",
+			"image": "images/cathedral.jpg",
+			"origin": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			}
+		}
+	}
+}

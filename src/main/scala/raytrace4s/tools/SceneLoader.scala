@@ -72,7 +72,7 @@ object SceneLoader {
           if (vertexes.length == 3) Some(new Triangle(vertexes, material, center, rotation)) else None
         }).flatten.toList
         
-      val res = new PolygonCollection(center, rotation, polygons)
+      val res = PolygonCollectionBulder.build(center, rotation, polygons)
       
       println("Loaded "+polygons.length+" polygons with bbox of "+res.bbox)
       
