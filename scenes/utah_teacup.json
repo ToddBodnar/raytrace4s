@@ -1,0 +1,51 @@
+{
+	"camera": {
+		"fov": 5,
+		"aspect": 2,
+		"origin": {
+			"x": -300,
+			"y": 100.0,
+			"z": -300
+		},
+		"up": {
+			"x": 0,
+			"y": 1,
+			"z": 0
+		},
+		"target": {
+			"x": 0,
+			"y": 15,
+			"z": 0
+		},
+		"aperature": 0.01,
+		"focus_distance": 435.77
+	},
+	"objects": [{
+		"type": "imported",
+		"subType": "stl_bin",
+		"fileName": "shapefiles/teapot.stl",
+		"center": {
+			"x": 0,
+			"y": 0.0,
+			"z": 0
+		},
+		"rotation": {
+			"yaw": 0.0,
+			"pitch": 0.00,
+			"roll": 0.0
+		},
+		"material": {
+			"type": "textureMaterial",
+			"texture": {
+				"type": "color",
+				
+					"r": 0.995,
+					"g": 0.995,
+					"b": 0.995
+			}
+		}
+	}],
+	"sky": {
+		"type": "blue"
+	}
+}

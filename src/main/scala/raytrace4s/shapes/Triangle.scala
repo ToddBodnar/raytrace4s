@@ -12,6 +12,10 @@ class Triangle(v1: Vector3d, v2: Vector3d, v3: Vector3d, material: Material, cen
          map(JsonFields.OBJECT_ROTATION).asInstanceOf[Map[String, Double]])
   }
   
+  def this(vectors: List[Vector3d], material: Material, center: Vector3d, rotation: Map[String, Double]) {
+    this(vectors(0), vectors(1), vectors(2), material, center, rotation)
+  }
+  
   val edge1 = v2 - v1
   val edge2 = v3 - v1
     

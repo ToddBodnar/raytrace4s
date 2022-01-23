@@ -31,6 +31,7 @@ object JsonFields {
   val SHAPE_SPHERE = "sphere"
   val SHAPE_TRIANGLE = "triangle"
   val SHAPE_PLATONIC = "platonic"
+  val SHAPE_IMPORTED = "imported"
   val SKY_BOX = "sky_box"
   
   val MATERIAL_TYPE = "type"
