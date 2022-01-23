@@ -28,6 +28,10 @@ object Randomizer {
     randRange(seed, 10000) / 10000.0
   }
   
+  def randDouble(seed1: Double, seed2: Double): Double = {
+    randDouble(((1000000 * seed1).toLong) ^ ((1000000 * seed2).toLong))
+  }
+  
   def randDouble(seed: Double): Double = {
     randDouble((seed * 1000).toLong)
   }

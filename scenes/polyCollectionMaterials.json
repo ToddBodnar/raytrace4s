@@ -268,24 +268,15 @@
   			},
   			"material": {
           "type": "lightMaterial",
-          "r": 9900000.5,
+          "r": 9900.5,
             "g": 0.90,
-            "b": 9900000.90
+            "b": 9900.90
           
   			}
   		
     }
 	],
 	"sky": {
-		"type": "dark",
-		"texture": {
-			"type": "image",
-			"image": "images/seesh mahal.jpg",
-			"origin": {
-				"x": 0,
-				"y": 0,
-				"z": 0
-			}
-		}
+		"type": "blue"
 	}
 }
