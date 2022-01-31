@@ -10,18 +10,37 @@ object PolygonCollectionBulder {
           // "randomly" choose a dimension to divide the shapes by
       
           val randomNumber = Randomizer.randomize(polygons.length)
+          
           val sortByDim = if (randomNumber % 3 == 0) {
-              p: Shape => p.bbox()._1.x
+              p: Vector3d => p.x
           } else if (randomNumber % 3 == 1) {
-              p: Shape => p.bbox()._1.y
+              p: Vector3d => p.y
           } else {
-              p: Shape => p.bbox()._1.z
+              p: Vector3d => p.z
           }
         
+        
+        
           
-          val (first, second) = polygons.sortBy(sortByDim).splitAt(polygons.length / 2)
+          val (first, second) = polygons.sortBy(shape => sortByDim(shape.bbox()._1)).splitAt(polygons.length / 2)
           
-          new PolygonCollection(center, rotation, List(build(center, rotation, first), build(center, rotation, second)))
+          // in general, we think about dividing this into three boxes: left, right, and "overlap"
+          // this is because some times there are a lot of "wide" polygons, so if you put them in left or right, 
+          // then the bbox doesn't really decrease in size, so the tree doesn't give much of a speed up
+          
+          val middle = sortByDim(second(0).bbox._1)
+          
+          val left = polygons.filter(p => sortByDim(p.bbox._2) < middle)
+          val right = polygons.filter(p => sortByDim(p.bbox._1) > middle)
+          
+          val overlap = polygons.filter(p => !(sortByDim(p.bbox._2) < middle || sortByDim(p.bbox._1) > middle))
+          
+          // some times nothing can be cleanly divided by this dimension, in this case just do a 50/50 split
+          if (left.length == 0 && right.length == 0) {
+              new PolygonCollection(center, rotation, List(build(center, rotation, first),build(center, rotation, second)))
+          } else {
+              new PolygonCollection(center, rotation, List(build(center, rotation, left), build(center, rotation, overlap), build(center, rotation, right)))
+          }
       }
   }
 }
