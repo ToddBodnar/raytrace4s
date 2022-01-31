@@ -82,8 +82,8 @@ object SceneLoader {
   def loadSky(json: Map[String, Any]): SkyMaterial = {
     json(JsonFields.SKY_OBJECT_TYPE) match {
       case JsonFields.NORMAL_SKY => new SkyMaterial()
-      case JsonFields.DARK_SKY => new DarkSkyMaterial()
       case JsonFields.TEXTURE_SKY => new TextureSkyMaterial(json)
+      case _ => new DarkSkyMaterial()
     }
   }
 }
