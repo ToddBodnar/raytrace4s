@@ -4,5 +4,8 @@
 
 test.png
 
+.bsp
+.settings
 *.class
 /target/
+project/
